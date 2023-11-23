@@ -1,0 +1,220 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>school-store</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="Free HTML Templates" name="keywords" />
+    <meta content="Free HTML Templates" name="description" />
+
+    <!-- Favicon -->
+    <link href="{% static "img/favicon.ico" %}" rel="icon" />
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Handlee&family=Nunito&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Flaticon Font -->
+    <link href="{% static "lib/flaticon/font/flaticon.css" %}" rel="stylesheet" />
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static "lib/owlcarousel/assets/owl.carousel.min.css" %}" rel="stylesheet" />
+    <link href="{% static "lib/lightbox/css/lightbox.min.css" %}" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static "css/style.css" %}" rel="stylesheet" />
+    <style>
+        .btn-light {
+            color: #f8f9fa;
+            background-color: #17a2b8;
+            border-color: #f8f9fa;
+            position: absolute;
+            left: 1445px;
+            top: 58px;
+            font-family: cursive;
+        
+        }       
+    </style>
+  </head>
+
+  <body>
+   
+    <a href="{% url 'logout' %}" class="btn btn-light">Logout</a>
+    <div class="container-fluid bg-primary mb-5">
+        <div
+          class="d-flex flex-column align-items-center justify-content-center"
+          style="min-height: 150px"    
+        >
+          <h3 class="display-3 font-weight-bold text-white">Logged in Panel</h3>
+         
+        </div>
+      </div>
+
+    <!-- Facilities Start -->
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <h2 class="mb-4">Order Form</h2>
+                <form method="post" action="{% url 'staff' %}">
+                    {% csrf_token %}
+    
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="dob">DOB:</label>
+                        <input type="date" class="form-control" id="dob" name="dob" required>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="age">Age:</label>
+                        <input type="number" class="form-control" id="age" name="age" required>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="gender">Gender:</label>
+                        <select id="gender" name="gender" class="form-control" required>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="phone">Phone Number:</label>
+                        <input type="tel" class="form-control" id="phone" name="phone" required>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="address">Address:</label>
+                        <textarea class="form-control" id="address" name="address" rows="3" required></textarea>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="department">Department:</label>
+                        <select id="department" name="department" class="form-control" required onchange="updateCourses()">
+                            <option value="">Select Department</option>
+                            {% for department in departments %}
+                                <option value="{{ department.id }}">{{ department.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="course">Course:</label>
+                        <select id="course" name="course" class="form-control" required>
+                            <option value="">Select Course</option>
+                        </select>
+                    </div>
+                    
+                   
+                    <!-- You'll need to implement the logic for dependent dropdowns (Courses) using JavaScript -->
+    
+                    <div class="form-group">
+                        <label for="purpose">Purpose:</label>
+                        <select id="purpose" name="purpose" class="form-control" required>
+                            <option value="enquiry">Enquiry</option>
+                            <option value="place_order">Place Order</option>
+                            <option value="return">Return</option>
+                            <!-- Add other purpose options as needed -->
+                        </select>
+                    </div>
+    
+                    <div class="form-group">
+                        <label>Materials Provide:</label><br>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="notebook" name="materials[]" value="notebook">
+                            <label class="form-check-label" for="notebook">Notebook</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="pen" name="materials[]" value="pen">
+                            <label class="form-check-label" for="pen">Pen</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="exampapersy" name="materials[]" value="pen">
+                            <label class="form-check-label" for="pen">Pen</label>
+                        </div>
+                        <!-- Add other materials as needed -->
+                    </div>
+    
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Facilities Start -->
+    <footer style="    margin-top: 274px;
+    position: relative;
+    top: 53px;">
+        <div class="container-fluid bg-primary mb-5">
+            <div
+              class="d-flex flex-column align-items-center justify-content-center"
+              style="min-height: 150px"    
+            >
+             
+             
+            </div>
+          </div>
+      </footer>
+
+  </body>
+  <script>
+    function updateCourses() {
+        var departmentSelect = document.getElementById('department');
+        var courseSelect = document.getElementById('course');
+
+        // Clear previous options
+        courseSelect.innerHTML = '<option value="">Select Course</option>';
+
+        // Get selected department ID
+        var departmentId = parseInt(departmentSelect.value);
+
+        if (isNaN(departmentId)) {
+            console.error('Invalid department ID');
+            return;
+        }
+
+        // Fetch courses from the server based on the selected department
+        fetch(`/get_courses/?department_id=${departmentId}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Check if the data array is not empty
+                if (Array.isArray(data) && data.length > 0) {
+                    // Populate courses dropdown with the fetched data
+                    data.forEach(course => {
+                        var option = document.createElement('option');
+                        option.value = course.id;
+                        option.text = course.name;
+                        courseSelect.add(option);
+                    });
+                } else {
+                    console.error('No courses found for the selected department');
+                }
+            })
+            .catch(error => console.error('Error fetching courses:', error));
+    }
+</script>
+
+</html>

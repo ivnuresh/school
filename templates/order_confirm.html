@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>school-store</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="Free HTML Templates" name="keywords" />
+    <meta content="Free HTML Templates" name="description" />
+
+    <!-- Favicon -->
+    <link href="{% static "img/favicon.ico" %}" rel="icon" />
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Handlee&family=Nunito&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Flaticon Font -->
+    <link href="{% static "lib/flaticon/font/flaticon.css" %}" rel="stylesheet" />
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static "lib/owlcarousel/assets/owl.carousel.min.css" %}" rel="stylesheet" />
+    <link href="{% static "lib/lightbox/css/lightbox.min.css" %}" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static "css/style.css" %}" rel="stylesheet" />
+    <style>
+        .btn-light {
+            color: #f8f9fa;
+            background-color: #17a2b8;
+            border-color: #f8f9fa;
+            position: absolute;
+            left: 1445px;
+            top: 58px;
+            font-family: cursive;
+        
+        }       
+    </style>
+  </head>
+
+  <body>
+   
+    <a href="{% url 'logout' %}" class="btn btn-light">Logout</a>
+    <div class="container-fluid bg-primary mb-5">
+        <div
+          class="d-flex flex-column align-items-center justify-content-center"
+          style="min-height: 150px"    
+        >
+          <h3 class="display-3 font-weight-bold text-white">WELCOME</h3>
+         
+        </div>
+      </div>
+
+    <!-- Facilities Start -->
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <h2 class="mb-4">Successfully order confirmed</h2>
+             
+            </div>
+        </div>
+    </div>
+    <!-- Facilities Start -->
+    <footer style="    margin-top: 274px;
+    position: relative;
+    top: 53px;">
+        <div class="container-fluid bg-primary mb-5">
+            <div
+              class="d-flex flex-column align-items-center justify-content-center"
+              style="min-height: 150px"    
+            >
+             
+             
+            </div>
+          </div>
+      </footer>
+
+  </body>
+
+
+</html>

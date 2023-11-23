@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block header %}
+    <!-- Leave this block empty to exclude the header -->
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid bg-primary mb-5">
+  <div
+    class="d-flex flex-column align-items-center justify-content-center"
+    style="min-height: 150px"    
+  >
+    <h3 class="display-3 font-weight-bold text-white">Register</h3>
+    <div class="d-inline-flex text-white">
+      <p class="m-0"><a class="text-white" href="{% url 'home' %}">Home</a></p>
+
+      <p class="m-0 px-2">/</p>
+      <p class="m-0">Register</p>
+    </div>
+  </div>
+</div>
+
+<!-- Register Start -->
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-center">Register</h3>
+                </div>
+                <div class="card-body">
+                  {% if messages %}
+                  <div class="alert alert-danger">
+                      <ul>
+                          {% for message in messages %}
+                              <li>{{ message }}</li>
+                          {% endfor %}
+                      </ul>
+                  </div>
+              {% endif %}
+                    <form method="post" action="{% url 'register' %}">
+                        {% csrf_token %}
+
+                        <div class="form-group">
+                            <label for="username">Username:</label>
+                            <input type="text" class="form-control" id="username" name="username" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password:</label>
+                            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Register End -->
+{% endblock %}
